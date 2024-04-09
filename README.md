@@ -26,11 +26,10 @@ Checkout our Website[@surftheturf.herokuapp.com/](https://surftheturf.herokuapp.
 - [@kiran](https://github.com/Rameshkiran)
 
 
-<!----
 ## Additional Collaborators:
 - [@kavinkumar](https://github.com/Kavin1421)
 - [@Abdullah](https://github.com/Abdullahasm786)
---->
+
 
 ## Features:
 
@@ -82,11 +81,9 @@ After payment through razorpay mail confirmation:
 
 ![Gmail Confirmation](https://github.com/parthd06/SurfTheTurf/blob/main/Extras/Screenshots/ss15.png)
 
-About Us page:
 
-![App Screenshot12](https://github.com/parthd06/SurfTheTurf/blob/main/Extras/Screenshots/ss12.png)
 
-![App Screenshot13](https://github.com/parthd06/SurfTheTurf/blob/main/Extras/Screenshots/ss13.png)
+
 
 Contact Us Page:
 
