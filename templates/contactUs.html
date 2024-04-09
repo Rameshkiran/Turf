@@ -133,7 +133,8 @@
     <div class="contact-section">
       <h1>Contact Us</h1>
       <div class="border"></div>
-      <form class="contact-form" action="contactUs.html" method="POST">
+      <form class="contact-form" action="/contactus/" method="POST">
+        {% csrf_token %}
         <input type="text" class="contact-form-text" placeholder="Your Name" />
         <input type="text" class="contact-form-text" placeholder="Your Email" />
         <input

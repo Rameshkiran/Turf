@@ -1,0 +1,10 @@
+Hello, {{ name }}
+
+Thank you for booking the turf. Your payment has been successfully processed.
+
+Amount: {{ amount }}
+
+If you have any questions or concerns, feel free to contact us.
+
+Best regards,
+Aadukalam - Multi Sport Park
