@@ -611,6 +611,7 @@ def success(request):
         # return redirect('book_now')
 
         # Sending Email
+        print("kavin Pro")
         message_plain = render_to_string('email.txt')
         message_html = render_to_string('email.html', {'amount': user.amount})
 
@@ -621,7 +622,7 @@ def success(request):
             [user.email],
             html_message=message_html
         )
-
+    print(request)
     return render(request, 'success.html')
 
 
