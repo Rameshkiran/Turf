@@ -221,35 +221,16 @@
             </ul>
         <br>
         <label for="refreshmentCheckbox">Would you like to enjoy some refreshments during your game?</label>
-<input type="checkbox" id="refreshmentCheckbox">
-<div id="refreshmentOptions">
-    <label><input type="checkbox" name="refreshment" value="snacks"> Snacks</label><br>
-    <label><input type="checkbox" name="refreshment" value="lunch"> Lunch</label><br>
-    <label><input type="checkbox" name="refreshment" value="fresh_juice"> Fresh Juice</label><br>
-    <label><input type="checkbox" name="refreshment" value="cool_drinks"> Cool Drinks</label><br>
-    <label><input type="checkbox" name="refreshment" value="ice_cream"> Ice Cream</label><br>
-</div>
-
-<div id="selectedRefreshments">
-    <h3>Selected Refreshments:</h3>
-    <ul id="selectedRefreshmentsList">
-        <li><label style="display: none;"><input type="checkbox" name="refreshment" value="snacks"> Snacks</label></li>
-        <li><label style="display: none;"><input type="checkbox" name="refreshment" value="lunch"> Lunch</label></li>
-        <li><label style="display: none;"><input type="checkbox" name="refreshment" value="fresh_juice"> Fresh Juice</label></li>
-        <li><label style="display: none;"><input type="checkbox" name="refreshment" value="cool_drinks"> Cool Drinks</label></li>
-        <li><label style="display: none;"><input type="checkbox" name="refreshment" value="ice_cream"> Ice Cream</label></li>
-    </ul>
-</div>
-            <!-- <label for="refreshmentCheckbox">Would you like to enjoy some refreshments during your game?</label>
-            <input type="checkbox" id="refreshmentCheckbox" onchange="toggleCheckboxes()">
-            <div id="refreshmentOptions" style="display:none;">
-                <label><input type="checkbox" name="refreshment" value="snacks"> Snacks</label><br>
-                <label><input type="checkbox" name="refreshment" value="lunch"> Lunch</label><br>
-                <label><input type="checkbox" name="refreshment" value="fresh_juice"> Fresh Juice</label><br>
-                <label><input type="checkbox" name="refreshment" value="cool_drinks"> Cool Drinks</label><br>
-                <label><input type="checkbox" name="refreshment" value="ice_cream"> Ice Cream</label><br>
-            </div>
-        </div> -->
+        <input type="checkbox" id="refreshmentCheckbox" onchange="toggleCheckboxes()">
+        <div id="refreshmentOptions" style="display:none">
+            <label><input type="checkbox" name="refreshment" value="snacks" onchange="showSelectedRefreshments()"> Snacks</label><br>
+            <label><input type="checkbox" name="refreshment" value="lunch" onchange="showSelectedRefreshments()"> Lunch</label><br>
+            <label><input type="checkbox" name="refreshment" value="fresh_juice" onchange="showSelectedRefreshments()"> Fresh Juice</label><br>
+            <label><input type="checkbox" name="refreshment" value="cool_drinks" onchange="showSelectedRefreshments()"> Cool Drinks</label><br>
+            <label><input type="checkbox" name="refreshment" value="ice_cream" onchange="showSelectedRefreshments()"> Ice Cream</label><br>
+        </div>
+        
+        <div id="selectedRefreshments"></div>
         
         <script>
             function toggleCheckboxes() {
@@ -260,7 +241,17 @@
                     options.style.display = 'block';
                 } else {
                     options.style.display = 'none';
+                    document.getElementById('selectedRefreshments').innerText = ""; // Clear selected items when checkbox is unchecked
                 }
+            }
+        
+            function showSelectedRefreshments() {
+                var selectedItems = document.querySelectorAll('input[name="refreshment"]:checked');
+                var selectedItemsText = "Selected refreshments:\n";
+                selectedItems.forEach(function(item, index) {
+                    selectedItemsText += (index + 1) + ". " + item.parentNode.textContent.trim() + "\n";
+                });
+                document.getElementById('selectedRefreshments').innerText = selectedItemsText;
             }
         </script>
         
