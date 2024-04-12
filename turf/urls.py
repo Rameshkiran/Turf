@@ -10,10 +10,12 @@ urlpatterns = [
     path("signup", views.signup, name="signup"),
     path("logout", views.logout, name="logout"),
     path("contactus/", views.contactus, name="contactus"),
+    # path("contactus/aboutus/", views.contactus, name="contactus"),
     path("aboutus", views.aboutus, name="aboutus"),
     path('turfBilling', views.turfBilling, name='turfBilling'),
     path('orderHistory', views.orderHistory, name="orderHistory"),
     path('allBookings', views.allBookings, name="allBookings"),
     path('delete_booking/<int:id>', views.delete_booking, name="delete_booking"),
-    path('success', views.success, name='success')
+    path('success', views.success, name='success'),
+    # path('confirm_booking/', views.confirm_booking, name='confirm_booking')
 ]

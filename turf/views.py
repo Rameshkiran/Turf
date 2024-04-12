@@ -19,6 +19,7 @@ import razorpay
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
 
+
 def index(request):
 
     # days=[
@@ -209,45 +210,45 @@ def aboutus(request):
 
 
 # def confirm_booking(request):
-    # if request.method == 'POST':
-    #     fullName = request.POST['fullName']
-    #     fromCity = request.POST['fromCity']
-    #     toCity = request.POST['toCity']
-    #     depatureDate = request.POST['depatureDate']
-    #     arrivalDate = request.POST['days']
-    #     noOfRooms = int(request.POST['noOfRooms'])
-    #     noOfAdults = int(request.POST['noOfAdults'])
-    #     noOfChildren = int(request.POST['noOfChildren'])
-    #     email = request.POST['email']
-    #     phoneNo = request.POST['phoneNo']
-    #     amountPerPerson = request.POST['amountPerPerson']
-    #     totalAmount = float(request.POST['totalAmount'])
-    #     userName = request.user.username
+#     if request.method == 'POST':
+#         # fullName = request.POST['fullName']
+#         # fromCity = request.POST['fromCity']
+#         # toCity = request.POST['toCity']
+#         # depatureDate = request.POST['depatureDate']
+#         # arrivalDate = request.POST['days']
+#         # noOfRooms = int(request.POST['noOfRooms'])
+#         # noOfAdults = int(request.POST['noOfAdults'])
+#         # noOfChildren = int(request.POST['noOfChildren'])
+#         # email = request.POST['email']
+#         # phoneNo = request.POST['phoneNo']
+#         # amountPerPerson = request.POST['amountPerPerson']
+#         # totalAmount = float(request.POST['totalAmount'])
+#         # userName = request.user.username
 
-    #     books = ConfirmBooking(fullName=fullName, fromCity=fromCity, toCity=toCity,
-    #                            depatureDate=depatureDate, days=arrivalDate, noOfRooms=noOfRooms, noOfAdults=noOfAdults,
-    #                            noOfChildren=noOfChildren, email=email, phoneNo=phoneNo, amountPerPerson=amountPerPerson,
-    #                            totalAmount=totalAmount, userName=userName)
-    #     books.save()
+#         # books = ConfirmBooking(fullName=fullName, fromCity=fromCity, toCity=toCity,
+#         #                        depatureDate=depatureDate, days=arrivalDate, noOfRooms=noOfRooms, noOfAdults=noOfAdults,
+#         #                        noOfChildren=noOfChildren, email=email, phoneNo=phoneNo, amountPerPerson=amountPerPerson,
+#         #                        totalAmount=totalAmount, userName=userName)
+#         # books.save()
 
-    #     message = render_to_string('order_placed_body.html', {'fullName': fullName, 'fromCity': fromCity, 'toCity': toCity, 'depatureDate': depatureDate, 'arrivalDate': arrivalDate,
-    #                                'noOfRooms': noOfRooms, 'noOfAdults': noOfAdults, 'noOfChildren': noOfChildren, 'email': email, 'phoneNo': phoneNo, 'amountPerPerson': amountPerPerson, 'totalAmount': totalAmount})
-    #     msg = EmailMessage(
-    #         'Tripology',
-    #         message,
-    #         settings.EMAIL_HOST_USER,
-    #         [request.user.email]
-    #     )
-    #     msg.content_subtype = "html"  # Main content is now text/html
-    #     msg.send()
+#         message = render_to_string('order_placed_body.html', {'fullName': "kavin", 'fromCity': "erode", 'toCity': "Karur", 'depatureDate': "depatureDate", 'arrivalDate': "arrivalDate",
+#                                    'noOfRooms': "noOfRooms", 'noOfAdults': 1, 'noOfChildren': 1, 'email': "rkirankumaraws@gmail.com", 'phoneNo': 9360037784, 'amountPerPerson': "400", 'totalAmount': "4000"})
+#         msg = EmailMessage(
+#             'Tripology',
+#             message,
+#             settings.EMAIL_HOST_USER,
+#             [request.user.email]
+#         )
+#         msg.content_subtype = "html"  # Main content is now text/html
+#         msg.send()
 
-    #     print("Mail successfully sent")
+#         print("Mail successfully sent")
 
-    #     print("User Added")
+#         print("User Added")
 
-    #     return redirect('/')
-    # else:
-    #     return render(request, 'booking.html')
+#         return redirect('/')
+#     else:
+#         return render(request, 'email.html')
 
 
 update = {"1"}
@@ -612,16 +613,29 @@ def success(request):
 
         # Sending Email
         print("kavin Pro")
+        
         message_plain = render_to_string('email.txt')
         message_html = render_to_string('email.html', {'amount': user.amount})
 
-        send_mail(
-            'Turf Booking Successful',
-            message_plain,
-            settings.EMAIL_HOST_USER,
-            [user.email],
-            html_message=message_html
-        )
+        msg = EmailMessage(
+        subject='Turf Booking Successful',
+        body="message_plain",
+        from_email=settings.EMAIL_HOST_USER,
+        to=[user.email],
+    )
+    msg.content_subtype = "html"
+    # msg.attach_alternative(message_html, "text/html")
+
+    try:
+        # Send the email
+        msg.send()
+        # confirm_booking()
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Error sending email: {e}")
+
+    # Send the email    
+    # msg.send()
     print(request)
     return render(request, 'success.html')
 
@@ -795,7 +809,7 @@ def delete_booking(request, id):
 
         choosenDay = datetime.strptime(selectedDate, "%Y-%m-%d").strftime("%A")
         print(choosenDay)
-        matrix = bookslot.objects.get(id='1')
+        matrix = bookslot.objects.get(id='8')
         if choosenDay == "Monday":
             for i in bookedSlots:
                 for j in range(1, 20):

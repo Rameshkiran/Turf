@@ -82,9 +82,9 @@
                                     <p>{{i.selected_date}}</p>
                                     <p>{{i.slots}}</p>
                                     <p>Rs. {{i.amount}}</p>
-                                    {% if currentDate < i.selected_date %}
+                                    {% if currentDate <= i.selected_date %}
                                     <a href="#" class="btn btn-outline-danger my-3" role="button" aria-pressed="true"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal{{i.id}}">Cancel</a>
+                                       data-bs-toggle="modal" data-bs-target="#exampleModal{{i.id}}">Cancel</a>
                                     {% endif %}
                                 </div>
                             </div>
